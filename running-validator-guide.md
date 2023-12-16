@@ -182,8 +182,8 @@ cvnd tx staking create-validator \
 --pubkey=$(cvnd tendermint show-validator) \
 --moniker="<show-name>" \
 --chain-id=cvn_2032-1 \
---commission-rate="0.05" \
---commission-max-rate="0.10" \
+--commission-rate="0.1" \
+--commission-max-rate="0.20" \
 --commission-max-change-rate="0.01" \
 --min-self-delegation="50" \
 --gas="auto" \
