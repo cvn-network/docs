@@ -27,16 +27,10 @@ sudo chmod 666 /var/run/docker.sock
 
 ## Deploy cvn node
 
-### Pull images
-
-```bash
-docker pull ghcr.io/cvn-network/cvn-cosmovisor:2.1.1
-```
-
 ### Downloading genesis.json and config
 
 ```bash
-mkdir -p ~/.cvn/config/
+mkdir -p ~/.cvnd/config/
 cd ~/.cvnd/config/
 wget -c https://raw.githubusercontent.com/cvn-network/cvn/release/v2.1.x/networks/local/config/genesis.json -O ~/.cvnd/config/genesis.json
 wget -c https://raw.githubusercontent.com/cvn-network/cvn/release/v2.1.x/networks/local/config/config.toml -O ~/.cvnd/config/config.toml
@@ -108,6 +102,71 @@ networks:
 
 ```bash
 docker-compose up -d
+```
+
+### Modify app.toml and config.toml configure files
+
+file path `~/.cvnd/config/app.toml`
+
+* The options that appear below need to be modified, and the options that do not appear do not need to be modified.
+
+```toml
+minimum-gas-prices = "1000000000acvnt"
+
+pruning = "custom"
+pruning-keep-recent = "100"
+pruning-interval = "10"
+
+[api]
+enable = false
+swagger = false
+
+[rosetta]
+enable = false
+
+[grpc]
+enable = false
+
+[grpc-web]
+enable = false
+
+[state-sync]
+snapshot-interval = 0
+
+[json-rpc]
+enable = false
+```
+
+File path `~/.cvnd/config/config.toml`
+
+* The options that appear below need to be modified, and the options that do not appear do not need to be modified.
+
+```toml
+[rpc]
+laddr = "tcp://0.0.0.0:26657"
+
+[p2p]
+laddr = "tcp://0.0.0.0:26656"
+seeds = ""
+addr_book_strict = true
+max_num_inbound_peers = 30
+max_num_outbound_peers = 30
+pex = false
+seed_mode = false
+private_peer_ids= ""
+
+[statesync]
+enable = false
+
+[storage]
+discard_abci_responses = true
+
+[tx_index]
+indexer = "null"
+
+[instrumentation]
+prometheus = true
+prometheus_listen_addr = ":26660"
 ```
 
 ### Configure firewall
