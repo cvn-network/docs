@@ -9,7 +9,7 @@ At present, the CVNd fully supports installation on linux distributions. For the
 
 8 G RAM 
 
-250G SSD hard driver
+200G SSD hard driver
 
 ## Software Requirements
 
