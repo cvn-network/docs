@@ -126,9 +126,6 @@ swagger = false
 [rosetta]
 enable = false
 
-[grpc]
-enable = false
-
 [grpc-web]
 enable = false
 
