@@ -59,7 +59,7 @@ version: "3"
 services:
   cvn_node:
     container_name: cvn_node
-    image: ghcr.io/cvn-network/cvn-cosmovisor:2.1.1
+    image: ghcr.io/cvn-network/cvn-cosmovisor:3.0.1
     volumes:
       - ~/.cvnd/data:/root/.cvnd/data
       - ~/.cvnd/config:/root/.cvnd/config
@@ -72,6 +72,7 @@ services:
       - 'cosmovisor'
       - 'run'
       - 'start'
+      - '--x-crisis-skip-assert-invariants'
     ports:
       - 0.0.0.0:26656:26656
       - 0.0.0.0:26657:26657
